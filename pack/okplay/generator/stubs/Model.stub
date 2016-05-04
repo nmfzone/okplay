@@ -1,0 +1,19 @@
+package models;
+
+import java.sql.*;
+import java.util.*;
+import javax.persistence.*;
+
+@Entity
+public class Generator_Model_Name {
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	public String id;
+
+    //
+
+    public Timestamp created_at;
+
+    public Timestamp updated_at;
+}

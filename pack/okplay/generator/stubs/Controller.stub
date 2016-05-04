@@ -1,0 +1,22 @@
+package controllers;
+
+import play.*;
+import play.mvc.*;
+import play.db.jpa.*;
+import views.html.*;
+import javax.inject.Inject;
+import java.util.*;
+
+import static play.libs.Json.*;
+
+public class Generator_Controller_Name extends Controller {
+
+    /**
+     * Display listing resources
+     *
+     */
+    public Result index() {
+        return ok();
+    }
+ 
+}
