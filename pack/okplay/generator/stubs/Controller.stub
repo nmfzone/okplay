@@ -9,7 +9,7 @@ import java.util.*;
 
 import static play.libs.Json.*;
 
-public class Generator_Controller_Name extends Controller {
+public class Controller_Stub_Name extends Controller {
 
     /**
      * Display listing resources

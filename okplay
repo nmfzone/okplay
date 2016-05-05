@@ -14,63 +14,8 @@
     ###     ###     ###     ###     ###     ###     ###     ###
 
 
-####/
- ##/
- #/ Include main script.
-#####/
-source pack/okplay/generator/main-script
+realpath="$(pwd -P)"
+generatorPath="${realpath}/pack/okplay/generator"
 
-
-okplay() {
-    action="$1"
-    make_controller="make:controller"
-    make_model="make:model"
-    error=0
-
-    # Generate Controller
-    if [ "$action" = "$make_controller" ]; then
-        file_name=$2
-        if [ "$file_name" != "" ]; then
-            generatePlayController $file_name
-        else
-            echo "You must enter controller name"
-        fi
-    # Generate Model
-    elif [ "$action" = "$make_model" ]; then
-        file_name=$2
-        if [ "$file_name" != "" ]; then
-            generatePlayModel $file_name
-        else
-            echo "You must enter model name"
-        fi
-    # Serve the Play Appalication
-    elif [ "$action" = "serve" ]; then
-        if [ "$2" = "--port" ]; then
-            activator "~run $3"
-        elif [ "$2" = "" ]; then
-            activator "~run 8000"
-        else
-            echo ""
-        fi
-    # Shows Okplay helper
-    elif [ "$action" = "-h" ] || [ "$action" = "--help" ]; then
-        helper
-    else
-        error=1
-    fi
-
-    if [ "$error" = "1" ]; then
-        echo "Command not found"
-    fi
-}
-
-
-####/
- ##/
- #/ Execute Okplay.
-#####/
-if [ "$1" = "" ] && [ "$2" = "" ] && [ "$3" = "" ]; then
-    helper
-else
-    okplay $1 $2 $3
-fi
+compile="$(javac -d ${generatorPath} ${generatorPath}/Generator.java)"
+java -cp "$generatorPath" Generator "$realpath" $1 $2 $3 $4 $5 $6
