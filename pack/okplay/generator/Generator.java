@@ -51,7 +51,7 @@ public class Generator
 
     public static void main(String[] args) {
         Generator g = new Generator();
- 
+
         String _p1 = "",
                _p2 = "",
                _p3 = "",
@@ -91,17 +91,31 @@ public class Generator
                         return;
                     }
                 } else if (_p2.equals("serve")) { 
-                    Process proc;
-                    String command;
-                    if (_p3.equals("--port")) {
-                        command = g.realPath + "/activator \"~run " + _p4  + "\"";
-                        proc = Runtime.getRuntime().exec(command);
-                        return;
-                    } else if (_p3.equals("")) {
-                        command = "activator \"~run 8000\"";
-                        proc = Runtime.getRuntime().exec(command);
-                        return;
+                    Process proc = null;
+                    try {
+                        if (_p3.equals("--port")) {
+                            proc = Runtime.getRuntime().exec(new String[]{
+                                g.realPath + "/activator",
+                                "~run " + _p4
+                            });
+                        } else if (_p3.equals("")) {
+                            proc = Runtime.getRuntime().exec(new String[]{
+                                g.realPath + "/activator",
+                                "~run 8000"
+                            });
+                        }
+                        BufferedReader br = new BufferedReader(
+                            new InputStreamReader(proc.getInputStream())
+                        );
+                        String s;
+                        while ((s = br.readLine()) != null)
+                            System.out.println(s);
+                        proc.waitFor();
+                        proc.destroy();
+                    } catch(Exception e) {
+                        System.out.println(e.toString());
                     }
+                    return;
                 } else {
                     g.showError("Command not found.");
                     return;
