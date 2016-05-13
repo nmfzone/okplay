@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="GeneratorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-05-13T07:56:35" hostname="Anonymous" time="0.024">
+  <properties/>
+  <testcase name="testWrite" classname="GeneratorTest" time="0.024"/>
+  <system-out><![CDATA[ INFO [Test worker] (GeneratorTest.java:36) - classes
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

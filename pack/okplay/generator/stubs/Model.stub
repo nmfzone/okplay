@@ -1,19 +1,26 @@
 package models;
 
+import javax.persistence.*;
 import java.sql.*;
 import java.util.*;
-import javax.persistence.*;
+import play.db.*;
+import play.db.jpa.*;
 
 @Entity
-public class Model_Stub_Name {
+@Table(name="Model_Table_Name")
+public class Model_Stub_Name extends Model
+{
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	public String id;
+	@Column(name="id")
+    private Long id;
 
     //
 
+    @Column(name="created_at")
     public Timestamp created_at;
 
+    @Column(name="updated_at")
     public Timestamp updated_at;
 }
