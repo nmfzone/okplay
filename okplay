@@ -16,6 +16,8 @@
 
 realpath="$(pwd -P)"
 generatorPath="${realpath}/pack/okplay/generator"
+generatorJar="${generatorPath}/build/libs"
 
-compile="$(javac -d ${generatorPath} ${generatorPath}/Generator.java)"
-java -cp "$generatorPath" Generator "$realpath" $1 $2 $3 $4 $5 $6
+
+# Execute
+java -jar "${generatorJar}/generator.jar" "$realpath" $1 $2 $3 $4 $5 $6
