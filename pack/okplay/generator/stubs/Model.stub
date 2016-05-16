@@ -8,7 +8,7 @@ import play.db.jpa.*;
 
 @Entity
 @Table(name="Model_Table_Name")
-public class Model_Stub_Name extends Model
+public class Model_Stub_Name
 {
 
     @Id
